@@ -1,0 +1,25 @@
+name: Compose CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  integration:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Start and build Compose services
+        run: docker compose up --build --wait --wait-timeout 90
+
+      - name: Smoke test task API
+        run: bash scripts/smoke-test.sh
+
+      - name: Stop Compose services
+        if: always()
+        run: docker compose down --volumes

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f4f0">
+    <title>Compose Tasks</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <main class="app">
+      <header class="topbar">
+        <a class="brand" href="/" aria-label="Compose Tasks home">
+          <span class="brand-mark" aria-hidden="true">C</span>
+          <span>compose<span class="brand-light">/</span>tasks</span>
+        </a>
+        <span class="stack-label"><span class="status-dot"></span> Local stack</span>
+      </header>
+
+      <section class="intro" aria-labelledby="page-title">
+        <p class="eyebrow">YOUR DAY, IN FOCUS</p>
+        <h1 id="page-title">Make room for<br><span>what matters.</span></h1>
+        <p class="subtitle">A little structure goes a long way. What would you like to get done?</p>
+      </section>
+
+      <section class="task-panel" aria-label="Task manager">
+        <form id="task-form" class="task-form">
+          <label class="sr-only" for="task-title">Add a task</label>
+          <input id="task-title" name="title" maxlength="200" placeholder="e.g. Plan the week ahead" autocomplete="off" required>
+          <button type="submit" class="add-button"><span aria-hidden="true">+</span> Add task</button>
+        </form>
+
+        <div class="list-header">
+          <h2>Tasks <span id="task-count" class="count">0</span></h2>
+          <div class="filters" role="group" aria-label="Filter tasks">
+            <button type="button" class="filter active" data-filter="all" aria-pressed="true">All</button>
+            <button type="button" class="filter" data-filter="active" aria-pressed="false">To do</button>
+            <button type="button" class="filter" data-filter="completed" aria-pressed="false">Done</button>
+          </div>
+        </div>
+
+        <p id="message" class="message" role="status" aria-live="polite"></p>
+        <ul id="task-list" class="task-list"></ul>
+        <div id="empty-state" class="empty-state">
+          <span class="empty-icon" aria-hidden="true">✳</span>
+          <p class="empty-title">A fresh start.</p>
+          <p class="empty-copy">Add a task above and take it one step at a time.</p>
+        </div>
+        <footer class="panel-footer">
+          <span><span class="footer-dot"></span> Saved to your local database</span>
+          <span>One thing at a time.</span>
+        </footer>
+      </section>
+
+      <p class="page-note">A small project, powered by <strong>Docker Compose</strong>.</p>
+    </main>
+  </body>
+</html>
